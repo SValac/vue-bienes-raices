@@ -40,10 +40,10 @@ export const useAuthStore = defineStore('auth', () => {
         }
     }
 
-    async function logout() {
+    async function logout()  {
         console.log('cerrando session...')
         try {
-            await signOut(authUser)
+            await signOut(auth) 
         } catch (error) {
             errorMsg.value  = errorCodes[error.code]
         }finally{
