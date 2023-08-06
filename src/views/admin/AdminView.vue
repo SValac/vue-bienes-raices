@@ -38,7 +38,11 @@ console.log(propiedadesCollection)
                 <v-list-item-subtitle>{{propiedadPrecio(propiedad.precio)}}</v-list-item-subtitle>
 
                 <template v-slot:append>
-                    <v-btn color="var(--verde)" class="mr-2">Editar</v-btn>
+                    <v-btn 
+                        color="var(--verde)" 
+                        class="mr-2"
+                        :to="{name: 'editar-propiedad', params: {id: propiedad.id}}"
+                    >Editar</v-btn>
                     <v-btn color="error">Eliminar</v-btn>
                 </template>
 
