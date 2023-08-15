@@ -39,6 +39,11 @@ const router = createRouter({
           component: () => import('../views/admin/EditarPropiedadView.vue')
         },
       ]
+    },
+    {
+      path: '/propiedad/:id',
+      name: 'propiedad',
+      component: () => import('../views/PropiedadView.vue')
     }
   ]
 })
