@@ -5,7 +5,7 @@ import { useAuthStore } from './stores/auth';
 
 const auth = useAuthStore();
 // desctructuon auth pero mantiene la reactividad gracias a storeToRef
-const {isAuth} = storeToRefs(auth)
+const {isAuth} = storeToRefs(auth);
 
 
 </script>
