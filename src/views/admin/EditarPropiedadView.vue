@@ -10,7 +10,9 @@ import useImage from "@/composables/useImage";
 import useLocationMap from "@/composables/useLocationMap";
 import { validationSchema } from "@/validation/propiedadSchema";
 
-const items = [1, 2, 3, 4, 5];
+const num_wc = [1,1.5,2,2.5,3,3.5,4,4.5,5];
+const num_habitaciones = [1,2,3,4,5,6];
+const num_estacionamiento = [1,2,3,4]
 
 const { url, uploadImage, image } = useImage();
 const { zoom, center, pin } = useLocationMap();
@@ -20,10 +22,14 @@ const { handleSubmit } = useForm({ validationSchema });
 const titulo = useField("titulo");
 const imagen = useField("imagen");
 const precio = useField("precio");
+const plantas = useField("plantas")
 const habitaciones = useField("habitaciones");
 const wc = useField("wc");
 const estacionamiento = useField("estacionamiento");
 const descripcion = useField("descripcion");
+const sala = useField("sala");
+const comedor = useField("comedor");
+const cocinaIntegral = useField("cocinaIntegral");
 const alberca = useField("alberca");
 
 const route = useRoute();
@@ -45,10 +51,14 @@ const propiedad = useDocument(docRef);
 watch(propiedad, (propiedad) => {
     titulo.value.value = propiedad.titulo
     precio.value.value = propiedad.precio
+    plantas.value.value = propiedad.plantas
     habitaciones.value.value = propiedad.habitaciones
     wc.value.value = propiedad.wc
     estacionamiento.value.value = propiedad.estacionamiento
     descripcion.value.value = propiedad.descripcion
+    sala.value.value = propiedad.sala
+    comedor.value.value = propiedad.comedor
+    cocinaIntegral.value.value = propiedad.cocinaIntegral
     alberca.value.value = propiedad.alberca
     center.value = propiedad.ubicacion
 });
@@ -127,19 +137,38 @@ console.log(propiedad);
                 >
             </div>
 
-            <v-text-field
-                v-model="precio.value.value"
-                :error-messages="precio.errorMessage.value"
-                label="Precio"
-                class="mb-5"
-            ></v-text-field>
+            <v-row>
+                <v-col
+                    cols="12"
+                    sm="6"
+                >
+                    <v-text-field
+                        v-model="precio.value.value"
+                        :error-messages="precio.errorMessage.value"
+                        label="Precio"
+                        class="mb-5"
+                    ></v-text-field>
+                </v-col>
+                <v-col
+                    cols="12"
+                    sm="6"
+                >
+                    <v-select
+                        :items="[1,2,3]"
+                        label="Plantas"
+                        class=""
+                        v-model="plantas.value.value"
+                        :error-messages="plantas.errorMessage.value"
+                    ></v-select>
+                </v-col>
+            </v-row>
 
             <v-row>
                 <v-col cols="12" md="4">
                     <v-select
                         label="Habitaciones"
                         class="mb-5"
-                        :items="items"
+                        :items="num_habitaciones"
                         v-model="habitaciones.value.value"
                         :error-messages="habitaciones.errorMessage.value"
                     />
@@ -149,7 +178,7 @@ console.log(propiedad);
                     <v-select
                         label="WC"
                         class="mb-5"
-                        :items="items"
+                        :items="num_wc"
                         v-model="wc.value.value"
                         :error-messages="wc.errorMessage.value"
                     />
@@ -159,7 +188,7 @@ console.log(propiedad);
                     <v-select
                         label="Lugares Estacionamiento"
                         class="mb-5"
-                        :items="items"
+                        :items="num_estacionamiento"
                         v-model="estacionamiento.value.value"
                         :error-messages="estacionamiento.errorMessage.value"
                     />
@@ -173,10 +202,25 @@ console.log(propiedad);
                 class="mb-5"
             ></v-textarea>
 
-            <v-checkbox
-                v-model="alberca.value.value"
-                label="Alberca"
-            ></v-checkbox>
+            <v-row>
+                <v-checkbox 
+                    label="Sala"
+                    v-model="sala.value.value"
+                />
+                <v-checkbox 
+                    label="Comedor"
+                    v-model="comedor.value.value"
+                />
+                <v-checkbox 
+                    label="Cocina Integral"
+                    v-model="cocinaIntegral.value.value"
+                />
+                <v-checkbox 
+                    label="Alberca"
+                    v-model="alberca.value.value"
+                />
+
+            </v-row>
 
             <h2 class="font-weight-bold text-center my-5">Ubicación</h2>
             <div class="pb-10">

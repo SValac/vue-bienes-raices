@@ -12,6 +12,10 @@ export const validationSchema = {
       if (/^[0-9]+$/.test(value)) return true
       return 'El Precio solo deben ser números'
     },
+    plantas (value) {
+      if (value) return true
+      return 'Selecciona una Cantidad'
+    },
     habitaciones (value) {
       if (value) return true
       return 'Selecciona una Cantidad'

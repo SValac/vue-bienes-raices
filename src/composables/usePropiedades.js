@@ -31,6 +31,8 @@ export default function usePropiedades() {
 
 
  */
+
+ 
     const filterItems = computed(() => {
         return alberca.value ?
             propiedadesCollection.value.filter(propiedad => propiedad.alberca):

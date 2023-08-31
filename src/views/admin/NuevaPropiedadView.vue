@@ -10,7 +10,9 @@ import "leaflet/dist/leaflet.css";
 import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
 
 const {zoom, center, pin} = useLocationMap()
-const items = [1,2,3,4,5];
+const num_wc = [1,1.5,2,2.5,3,3.5,4,4.5,5];
+const num_habitaciones = [1,2,3,4,5,6];
+const num_estacionamiento = [1,2,3,4]
 
 
 const router = useRouter();
@@ -31,13 +33,23 @@ const { handleSubmit } = useForm({
 const titulo = useField('titulo')
 const imagen = useField('imagen')
 const precio = useField('precio')
+const plantas = useField('plantas')
 const habitaciones = useField('habitaciones')
 const wc = useField('wc')
 const estacionamiento = useField('estacionamiento')
 const descripcion = useField('descripcion')
+const sala = useField('sala', null, {
+    initialValue: false
+});
+const comedor = useField('comedor', null, {
+    initialValue: false
+});
+const cocinaIntegral = useField('cocinaIntegral', null, {
+    initialValue: false
+});
 const alberca = useField('alberca', null, {
     initialValue: false
-})
+});
 
 
 const submit = handleSubmit(async (values) => {
@@ -104,26 +116,44 @@ const submit = handleSubmit(async (values) => {
                     class="w-50"
                 />
             </div>
-    
-            <v-text-field
-                name="precio"
-                label="Precio"
-                id="precio"
-                class="mb-5"
-                v-model="precio.value.value"
-                :error-messages="precio.errorMessage.value"
-            />
+            <v-row>
+                <v-col
+                    cols="12"
+                    sm="6"
+                >    
+                    <v-text-field
+                        name="precio"
+                        label="Precio"
+                        id="precio"
+                        class="mb-5"
+                        v-model="precio.value.value"
+                        :error-messages="precio.errorMessage.value"
+                    />
+                </v-col>
+                <v-col
+                    cols="12"
+                    sm="6"
+                >
+                    <v-select
+                        :items="[1,2,3]"
+                        label="Plantas"
+                        class=""
+                        v-model="plantas.value.value"
+                        :error-messages="plantas.errorMessage.value"
+                    ></v-select>
+                </v-col>
+            </v-row>
             <v-row>
                 <v-col
                     cols="12"
                     sm="4"
                 >
                     <v-select
-                    :items="items"
-                    label="Habitaciones"
-                    class=""
-                    v-model="habitaciones.value.value"
-                    :error-messages="habitaciones.errorMessage.value"
+                        :items="num_habitaciones"
+                        label="Habitaciones"
+                        class=""
+                        v-model="habitaciones.value.value"
+                        :error-messages="habitaciones.errorMessage.value"
                     ></v-select>
                 </v-col>
                 <v-col
@@ -131,11 +161,11 @@ const submit = handleSubmit(async (values) => {
                     sm="4"
                 >
                     <v-select
-                    :items="items"
-                    label="Baños"
-                    class=""
-                    v-model="wc.value.value"
-                    :error-messages="wc.errorMessage.value"
+                        :items="num_wc"
+                        label="Baños"
+                        class=""
+                        v-model="wc.value.value"
+                        :error-messages="wc.errorMessage.value"
                     ></v-select>
                 </v-col>
                 <v-col
@@ -143,7 +173,7 @@ const submit = handleSubmit(async (values) => {
                     sm="4"
                 >
                     <v-select
-                        :items="items"
+                        :items="num_estacionamiento"
                         label="Estacionamiento"
                         class=""
                         v-model="estacionamiento.value.value"
@@ -158,11 +188,25 @@ const submit = handleSubmit(async (values) => {
                 v-model="descripcion.value.value"
                 :error-messages="descripcion.errorMessage.value"
             />
+            <v-row>
+                <v-checkbox 
+                    label="Sala"
+                    v-model="sala.value.value"
+                />
+                <v-checkbox 
+                    label="Comedor"
+                    v-model="comedor.value.value"
+                />
+                <v-checkbox 
+                    label="Cocina Integral"
+                    v-model="cocinaIntegral.value.value"
+                />
+                <v-checkbox 
+                    label="Alberca"
+                    v-model="alberca.value.value"
+                />
 
-            <v-checkbox 
-                label="Alberca"
-                v-model="alberca.value.value"
-            />
+            </v-row>
 
             <h2 class="font-weight-bold text-center my-5">Ubicación</h2>
             <div class="pb-10">

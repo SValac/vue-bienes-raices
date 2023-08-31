@@ -29,7 +29,7 @@ watch(propiedad, (propiedad) => {
 <template>
     <v-card>
         <v-card-title
-            class="text-center text-h3 mt-5 font-weight-bold"
+            class="text-center text-h3 my-5 font-weight-bold"
         >
             {{ propiedad?.titulo }}
         </v-card-title>
@@ -42,6 +42,9 @@ watch(propiedad, (propiedad) => {
         <div class="bg-green-lighten-5 d-flex flex-column flex-md-row">
             <v-card-text>
                Precio: <span class="font-weight-bold">{{ propiedadPrecio( propiedad?.precio ) }}</span>
+            </v-card-text>
+            <v-card-text>
+               Plantas: <span class="font-weight-bold">{{ propiedad?.plantas }}</span>
             </v-card-text>
             <v-card-text>
                Baños: <span class="font-weight-bold">{{ propiedad?.wc }}</span>
