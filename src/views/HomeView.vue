@@ -188,7 +188,7 @@ watch(
                                 @update:modelValue="filterValues.plantas[0]?'':filterValues.plantas=[]"
                                 clearable
                                 hide-details="true"
-                                :items="[1,2]"
+                                :items="[1,2,3]"
                                 density="compact"
                                 label="Plantas"
                             ></v-select>
@@ -202,7 +202,7 @@ watch(
                                 @update:modelValue="filterValues.wc[0]?'':filterValues.wc=[]"
                                 clearable
                                 hide-details="true"
-                                :items="[1,2]"
+                                :items="[1,1.5,2,2.5,3,3.5,4]"
                                 density="compact"
                                 label="Baños"
                             ></v-select>
@@ -216,7 +216,7 @@ watch(
                                 @update:modelValue="filterValues.habitaciones[0]?'':filterValues.habitaciones=[]"
                                 clearable
                                 hide-details="true"
-                                :items="[1,2]"
+                                :items="[1,2,3,4,5]"
                                 density="compact"
                                 label="Habitaciones"
                             ></v-select>
@@ -230,7 +230,7 @@ watch(
                                 @update:modelValue="filterValues.estacionamiento[0]?'':filterValues.estacionamiento=[]"
                                 clearable
                                 hide-details="true"
-                                :items="[1,2]"
+                                :items="[1,2,3,4]"
                                 density="compact"
                                 label="Estacionamiento"
                             ></v-select>
