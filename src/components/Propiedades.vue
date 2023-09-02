@@ -21,7 +21,7 @@ defineProps({
     >
         <v-card>
             <v-img
-                :width="400"
+                :width="auto"
                 aspect-ratio="4/3"
                 cover
                 height="300"
